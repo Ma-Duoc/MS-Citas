@@ -1,27 +1,23 @@
 package com.microservicios.mscitas.service;
 
+import com.microservicios.mscitas.client.DisponibilidadService;
 import com.microservicios.mscitas.client.NotificationClient;
-import com.microservicios.mscitas.dto.CitaRequest;
-import com.microservicios.mscitas.dto.CitaResponse;
 import com.microservicios.mscitas.exception.CitaException;
 import com.microservicios.mscitas.exception.DisponibilidadException;
 import com.microservicios.mscitas.model.Cita;
+import com.microservicios.mscitas.model.dto.CitaRequest;
+import com.microservicios.mscitas.model.dto.CitaResponse;
 import com.microservicios.mscitas.repository.CitaRepository;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 @Transactional
 public class CitaService {
 
-    private static final Logger logger =
-            LoggerFactory.getLogger(CitaService.class);
+    private static final Logger logger = LoggerFactory.getLogger(CitaService.class);
 
     private final CitaRepository citaRepository;
     private final DisponibilidadService disponibilidadService;
@@ -40,10 +36,6 @@ public class CitaService {
     /**
      * Crear nueva cita médica
      */
-    @CircuitBreaker(
-            name = "citasService",
-            fallbackMethod = "fallbackCrearCita"
-    )
     public CitaResponse crearCita(CitaRequest request) {
 
         logger.info(
@@ -55,21 +47,77 @@ public class CitaService {
 
         try {
 
-            // =====================================
-            // VALIDAR DISPONIBILIDAD GENERAL
-            // =====================================
-            logger.info("Validando disponibilidad general");
+            // =========================
+            // 1. VALIDAR PACIENTE
+            // =========================
+            logger.info("Validando paciente {}", request.userId());
 
-            disponibilidadService.validarDisponibilidad(
-                    request.userId(),
-                    request.medicoId(),
-                    request.salaId(),
-                    request.fechaHora()
-            );
+            boolean pacienteValido =
+                    disponibilidadService.validarPaciente(request.userId());
 
-            // =====================================
-            // VALIDAR DUPLICADO MÉDICO
-            // =====================================
+            if (!pacienteValido) {
+
+                String errorMsg = String.format(
+                        "El paciente %s no es válido",
+                        request.userId()
+                );
+
+                logger.error(errorMsg);
+
+                throw new DisponibilidadException(errorMsg);
+            }
+
+            // =========================
+            // 2. VALIDAR MÉDICO
+            // =========================
+            logger.info("Validando disponibilidad del médico {}", request.medicoId());
+
+            boolean medicoDisponible =
+                    disponibilidadService.validarDisponibilidadMedico(
+                            request.medicoId(),
+                            request.fechaHora()
+                    );
+
+            if (!medicoDisponible) {
+
+                String errorMsg = String.format(
+                        "El médico %s no está disponible para la fecha %s",
+                        request.medicoId(),
+                        request.fechaHora()
+                );
+
+                logger.error(errorMsg);
+
+                throw new DisponibilidadException(errorMsg);
+            }
+
+            // =========================
+            // 3. VALIDAR SALA
+            // =========================
+            logger.info("Validando disponibilidad de la sala {}", request.salaId());
+
+            boolean salaDisponible =
+                    disponibilidadService.validarDisponibilidadSala(
+                            request.salaId(),
+                            request.fechaHora()
+                    );
+
+            if (!salaDisponible) {
+
+                String errorMsg = String.format(
+                        "La sala %s no está disponible para la fecha %s",
+                        request.salaId(),
+                        request.fechaHora()
+                );
+
+                logger.error(errorMsg);
+
+                throw new DisponibilidadException(errorMsg);
+            }
+
+            // =========================
+            // 4. VALIDAR DUPLICADOS
+            // =========================
             if (citaRepository.existsByMedicoIdAndFechaHora(
                     request.medicoId(),
                     request.fechaHora())) {
@@ -85,9 +133,6 @@ public class CitaService {
                 throw new CitaException(errorMsg);
             }
 
-            // =====================================
-            // VALIDAR DUPLICADO SALA
-            // =====================================
             if (citaRepository.existsBySalaIdAndFechaHora(
                     request.salaId(),
                     request.fechaHora())) {
@@ -103,9 +148,9 @@ public class CitaService {
                 throw new CitaException(errorMsg);
             }
 
-            // =====================================
-            // CREAR ENTIDAD
-            // =====================================
+            // =========================
+            // 5. CREAR ENTIDAD
+            // =========================
             logger.info("Guardando cita en base de datos");
 
             Cita nuevaCita = Cita.builder()
@@ -126,31 +171,25 @@ public class CitaService {
                     citaGuardada.getId()
             );
 
-            // =====================================
-            // ENVIAR NOTIFICACIÓN
-            // =====================================
+            // =========================
+            // 6. ENVIAR NOTIFICACIÓN
+            // =========================
             enviarNotificacionCitaCreada(citaGuardada);
 
-            logger.info(
-                    "Cita creada exitosamente con ID {}",
-                    citaGuardada.getId()
-            );
+            // =========================
+            // 7. RESPUESTA
+            // =========================
+            CitaResponse response =
+                    CitaResponse.fromEntity(citaGuardada);
 
-            return CitaResponse.fromEntity(citaGuardada);
+            logger.info("Cita creada exitosamente: {}", response);
+
+            return response;
 
         } catch (DisponibilidadException e) {
 
             logger.error(
-                    "Error de disponibilidad: {}",
-                    e.getMessage()
-            );
-
-            throw e;
-
-        } catch (CitaException e) {
-
-            logger.error(
-                    "Error de negocio: {}",
+                    "Error de disponibilidad al crear cita: {}",
                     e.getMessage()
             );
 
@@ -164,67 +203,11 @@ public class CitaService {
                     e
             );
 
-            throw e;
-        }
-    }
-
-    /**
-     * FALLBACK DEL CIRCUIT BREAKER
-     */
-    public CitaResponse fallbackCrearCita(
-            CitaRequest request,
-            Throwable t) {
-
-        logger.error(
-                "Fallback ejecutado en crearCita: {}",
-                t.getMessage(),
-                t
-        );
-
-        // =====================================
-        // RE-LANZAR EXCEPCIONES DE NEGOCIO
-        // =====================================
-        if (t instanceof DisponibilidadException disponibilidadException) {
-            throw disponibilidadException;
-        }
-
-        if (t instanceof CitaException citaException) {
-            throw citaException;
-        }
-
-        // =====================================
-        // MICROSERVICIOS CAÍDOS
-        // =====================================
-        if (t.getMessage() != null &&
-                t.getMessage().contains("MS_PACIENTES_UNAVAILABLE")) {
-
-            throw new RuntimeException(
-                    "MS_PACIENTES_UNAVAILABLE"
+            throw new CitaException(
+                    "Error al crear la cita: " + e.getMessage(),
+                    e
             );
         }
-
-        if (t.getMessage() != null &&
-                t.getMessage().contains("MS_MEDICOS_UNAVAILABLE")) {
-
-            throw new RuntimeException(
-                    "MS_MEDICOS_UNAVAILABLE"
-            );
-        }
-
-        if (t.getMessage() != null &&
-                t.getMessage().contains("MS_SALAS_UNAVAILABLE")) {
-
-            throw new RuntimeException(
-                    "MS_SALAS_UNAVAILABLE"
-            );
-        }
-
-        // =====================================
-        // FALLBACK GENERAL
-        // =====================================
-        throw new RuntimeException(
-                "SERVICIOS_EXTERNOS_UNAVAILABLE"
-        );
     }
 
     /**
@@ -289,6 +272,9 @@ public class CitaService {
         }
     }
 
+    /**
+     * Obtener cita por ID
+     */
     @Transactional(readOnly = true)
     public CitaResponse obtenerCita(Long id) {
 
@@ -307,33 +293,31 @@ public class CitaService {
                 });
     }
 
+    /**
+     * Obtener citas por usuario
+     */
     @Transactional(readOnly = true)
-    public List<CitaResponse> obtenerCitasPorUsuario(
-            String userId) {
+    public java.util.List<CitaResponse> obtenerCitasPorUsuario(String userId) {
 
-        logger.info(
-                "Buscando citas para el usuario: {}",
-                userId
-        );
+        logger.info("Buscando citas para el usuario: {}", userId);
 
         return citaRepository.findByUserId(userId)
                 .stream()
                 .map(CitaResponse::fromEntity)
-                .collect(Collectors.toList());
+                .collect(java.util.stream.Collectors.toList());
     }
 
+    /**
+     * Obtener citas por médico
+     */
     @Transactional(readOnly = true)
-    public List<CitaResponse> obtenerCitasPorMedico(
-            String medicoId) {
+    public java.util.List<CitaResponse> obtenerCitasPorMedico(String medicoId) {
 
-        logger.info(
-                "Buscando citas para el médico: {}",
-                medicoId
-        );
+        logger.info("Buscando citas para el médico: {}", medicoId);
 
         return citaRepository.findByMedicoId(medicoId)
                 .stream()
                 .map(CitaResponse::fromEntity)
-                .collect(Collectors.toList());
+                .collect(java.util.stream.Collectors.toList());
     }
 }
