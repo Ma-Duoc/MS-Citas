@@ -60,4 +60,8 @@ public class Cita {
     @Future(message = "La fecha y hora deben ser futuras")
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
+
+    @NotBlank(message = "El motivo de la cita es obligatorio")
+    @Column(name = "motivo", nullable = false)
+    private String motivo;
 }

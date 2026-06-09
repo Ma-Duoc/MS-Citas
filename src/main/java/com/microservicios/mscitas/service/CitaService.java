@@ -1,5 +1,6 @@
 package com.microservicios.mscitas.service;
 
+import com.microservicios.mscitas.client.HistorialClient;
 import com.microservicios.mscitas.client.NotificationClient;
 import com.microservicios.mscitas.dto.CitaRequest;
 import com.microservicios.mscitas.dto.CitaResponse;
@@ -26,15 +27,18 @@ public class CitaService {
     private final CitaRepository citaRepository;
     private final DisponibilidadService disponibilidadService;
     private final NotificationClient notificationClient;
+    private final HistorialClient historialClient;
 
     public CitaService(
             CitaRepository citaRepository,
             DisponibilidadService disponibilidadService,
-            NotificationClient notificationClient) {
+            NotificationClient notificationClient,
+            HistorialClient historialClient) {
 
         this.citaRepository = citaRepository;
         this.disponibilidadService = disponibilidadService;
         this.notificationClient = notificationClient;
+        this.historialClient = historialClient;
     }
 
     /**
@@ -117,6 +121,7 @@ public class CitaService {
                     .salaId(request.salaId())
                     .salaNombre(request.salaNombre())
                     .fechaHora(request.fechaHora())
+                    .motivo(request.motivo())
                     .build();
 
             Cita citaGuardada = citaRepository.save(nuevaCita);
@@ -125,6 +130,11 @@ public class CitaService {
                     "Cita guardada exitosamente con ID {}",
                     citaGuardada.getId()
             );
+
+            // =====================================
+            // ACTUALIZAR HISTORIAL
+            // =====================================
+            actualizarHistorialCita(citaGuardada);
 
             // =====================================
             // ENVIAR NOTIFICACIÓN
@@ -286,6 +296,45 @@ public class CitaService {
                     e.getMessage(),
                     e
             );
+        }
+    }
+
+    /**
+     * Actualizar historial médico al crear una cita
+     */
+    private void actualizarHistorialCita(Cita cita) {
+
+        try {
+
+            logger.info(
+                    "Actualizando historial para cita ID: {}",
+                    cita.getId()
+            );
+
+            HistorialClient.HistorialRequest request =
+                    new HistorialClient.HistorialRequest(
+                            cita.getUserId(),  // pacienteRut
+                            Long.parseLong(cita.getMedicoId()),  // medicoId
+                            "AGENDADA"  // estado inicial
+                    );
+
+            HistorialClient.HistorialResponse response =
+                    historialClient.crearHistorial(request);
+
+            logger.info(
+                    "Historial actualizado exitosamente con ID: {}",
+                    response.id()
+            );
+
+        } catch (Exception e) {
+
+            logger.error(
+                    "Error al actualizar historial para cita ID {}: {}",
+                    cita.getId(),
+                    e.getMessage(),
+                    e
+            );
+            // No fallar el proceso principal si historial falla
         }
     }
 

@@ -29,5 +29,8 @@ public record CitaRequest(
         
         @NotNull(message = "La fecha y hora son obligatorias")
         @Future(message = "La fecha y hora deben ser futuras")
-        LocalDateTime fechaHora
+        LocalDateTime fechaHora,
+        
+        @NotBlank(message = "El motivo de la cita es obligatorio")
+        String motivo
 ) {}
