@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="1.368" tests="12" errors="0" skipped="0" failures="2">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas\target\test-classes;C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas\target\classes;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.2.0\spring-boot-starter-web-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter\3.2.0\spring-boot-starter-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.2.0\spring-boot-starter-logging-3.2.0.jar;C:\Users\marco\.m2\repository\ch\qos\logback\logback-classic\1.4.11\logback-classic-1.4.11.jar;C:\Users\marco\.m2\repository\ch\qos\logback\logback-core\1.4.11\logback-core-1.4.11.jar;C:\Users\marco\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\marco\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\marco\.m2\repository\org\slf4j\jul-to-slf4j\2.0.9\jul-to-slf4j-2.0.9.jar;C:\Users\marco\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\marco\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.2.0\spring-boot-starter-json-3.2.0.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.3\jackson-databind-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.3\jackson-annotations-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.3\jackson-core-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.3\jackson-datatype-jdk8-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.3\jackson-datatype-jsr310-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.3\jackson-module-parameter-names-2.15.3.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.0\spring-boot-starter-tomcat-3.2.0.jar;C:\Users\marco\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.16\tomcat-embed-core-10.1.16.jar;C:\Users\marco\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.16\tomcat-embed-websocket-10.1.16.jar;C:\Users\marco\.m2\repository\org\springframework\spring-web\6.1.1\spring-web-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-beans\6.1.1\spring-beans-6.1.1.jar;C:\Users\marco\.m2\repository\io\micrometer\micrometer-observation\1.12.0\micrometer-observation-1.12.0.jar;C:\Users\marco\.m2\repository\io\micrometer\micrometer-commons\1.12.0\micrometer-commons-1.12.0.jar;C:\Users\marco\.m2\repository\org\springframework\spring-webmvc\6.1.1\spring-webmvc-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-aop\6.1.1\spring-aop-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-context\6.1.1\spring-context-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-expression\6.1.1\spring-expression-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.2.0\spring-boot-starter-data-jpa-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.2.0\spring-boot-starter-aop-3.2.0.jar;C:\Users\marco\.m2\repository\org\aspectj\aspectjweaver\1.9.20.1\aspectjweaver-1.9.20.1.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.0\spring-boot-starter-jdbc-3.2.0.jar;C:\Users\marco\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-jdbc\6.1.1\spring-jdbc-6.1.1.jar;C:\Users\marco\.m2\repository\org\hibernate\orm\hibernate-core\6.3.1.Final\hibernate-core-6.3.1.Final.jar;C:\Users\marco\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\marco\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\marco\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\marco\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\marco\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\marco\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\marco\.m2\repository\net\bytebuddy\byte-buddy\1.14.10\byte-buddy-1.14.10.jar;C:\Users\marco\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.4\jaxb-runtime-4.0.4.jar;C:\Users\marco\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.4\jaxb-core-4.0.4.jar;C:\Users\marco\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\marco\.m2\repository\org\glassfish\jaxb\txw2\4.0.4\txw2-4.0.4.jar;C:\Users\marco\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\marco\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\marco\.m2\repository\org\antlr\antlr4-runtime\4.10.1\antlr4-runtime-4.10.1.jar;C:\Users\marco\.m2\repository\org\springframework\data\spring-data-jpa\3.2.0\spring-data-jpa-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\data\spring-data-commons\3.2.0\spring-data-commons-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\spring-orm\6.1.1\spring-orm-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-tx\6.1.1\spring-tx-6.1.1.jar;C:\Users\marco\.m2\repository\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar;C:\Users\marco\.m2\repository\org\springframework\spring-aspects\6.1.1\spring-aspects-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.2.0\spring-boot-starter-validation-3.2.0.jar;C:\Users\marco\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.16\tomcat-embed-el-10.1.16.jar;C:\Users\marco\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\marco\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-starter-openfeign\4.1.0\spring-cloud-starter-openfeign-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-starter\4.1.0\spring-cloud-starter-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-context\4.1.0\spring-cloud-context-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\security\spring-security-rsa\1.1.1\spring-security-rsa-1.1.1.jar;C:\Users\marco\.m2\repository\org\bouncycastle\bcprov-jdk18on\1.74\bcprov-jdk18on-1.74.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-openfeign-core\4.1.0\spring-cloud-openfeign-core-4.1.0.jar;C:\Users\marco\.m2\repository\io\github\openfeign\form\feign-form-spring\3.8.0\feign-form-spring-3.8.0.jar;C:\Users\marco\.m2\repository\io\github\openfeign\form\feign-form\3.8.0\feign-form-3.8.0.jar;C:\Users\marco\.m2\repository\commons-fileupload\commons-fileupload\1.5\commons-fileupload-1.5.jar;C:\Users\marco\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-commons\4.1.0\spring-cloud-commons-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\security\spring-security-crypto\6.2.0\spring-security-crypto-6.2.0.jar;C:\Users\marco\.m2\repository\io\github\openfeign\feign-core\13.1\feign-core-13.1.jar;C:\Users\marco\.m2\repository\io\github\openfeign\feign-slf4j\13.1\feign-slf4j-13.1.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-starter-circuitbreaker-resilience4j\3.1.0\spring-cloud-starter-circuitbreaker-resilience4j-3.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-circuitbreaker-resilience4j\3.1.0\spring-cloud-circuitbreaker-resilience4j-3.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-spring-boot3\2.1.0\resilience4j-spring-boot3-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-spring6\2.1.0\resilience4j-spring6-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-annotations\2.1.0\resilience4j-annotations-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-consumer\2.1.0\resilience4j-consumer-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-circularbuffer\2.1.0\resilience4j-circularbuffer-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-framework-common\2.1.0\resilience4j-framework-common-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-micrometer\2.1.0\resilience4j-micrometer-2.1.0.jar;C:\Users\marco\.m2\repository\io\micrometer\micrometer-core\1.12.0\micrometer-core-1.12.0.jar;C:\Users\marco\.m2\repository\org\hdrhistogram\HdrHistogram\2.1.12\HdrHistogram-2.1.12.jar;C:\Users\marco\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-retry\2.1.0\resilience4j-retry-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-ratelimiter\2.1.0\resilience4j-ratelimiter-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-circuitbreaker\2.1.0\resilience4j-circuitbreaker-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-core\2.1.0\resilience4j-core-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-timelimiter\2.1.0\resilience4j-timelimiter-2.1.0.jar;C:\Users\marco\.m2\repository\com\mysql\mysql-connector-j\8.1.0\mysql-connector-j-8.1.0.jar;C:\Users\marco\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-devtools\3.2.0\spring-boot-devtools-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot\3.2.0\spring-boot-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.0\spring-boot-autoconfigure-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.2.0\spring-boot-starter-test-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-test\3.2.0\spring-boot-test-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.0\spring-boot-test-autoconfigure-3.2.0.jar;C:\Users\marco\.m2\repository\com\jayway\jsonpath\json-path\2.8.0\json-path-2.8.0.jar;C:\Users\marco\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\marco\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\marco\.m2\repository\net\minidev\json-smart\2.5.0\json-smart-2.5.0.jar;C:\Users\marco\.m2\repository\net\minidev\accessors-smart\2.5.0\accessors-smart-2.5.0.jar;C:\Users\marco\.m2\repository\org\ow2\asm\asm\9.3\asm-9.3.jar;C:\Users\marco\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\marco\.m2\repository\org\awaitility\awaitility\4.2.0\awaitility-4.2.0.jar;C:\Users\marco\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\marco\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\marco\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\marco\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\marco\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;C:\Users\marco\.m2\repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\marco\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.10\byte-buddy-agent-1.14.10.jar;C:\Users\marco\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\marco\.m2\repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\marco\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\marco\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-core\6.1.1\spring-core-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-jcl\6.1.1\spring-jcl-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-test\6.1.1\spring-test-6.1.1.jar;C:\Users\marco\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;C:\Users\marco\.m2\repository\com\h2database\h2\2.2.224\h2-2.2.224.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Santiago"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
+    <property name="sun.java.command" value="C:\Users\marco\AppData\Local\Temp\surefire5400888189990728839\surefirebooter-20260617181404385_3.jar C:\Users\marco\AppData\Local\Temp\surefire5400888189990728839 2026-06-17T18-14-04_088-jvmRun1 surefire-20260617181404385_1tmp surefire_0-20260617181404385_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas\target\test-classes;C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas\target\classes;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.2.0\spring-boot-starter-web-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter\3.2.0\spring-boot-starter-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.2.0\spring-boot-starter-logging-3.2.0.jar;C:\Users\marco\.m2\repository\ch\qos\logback\logback-classic\1.4.11\logback-classic-1.4.11.jar;C:\Users\marco\.m2\repository\ch\qos\logback\logback-core\1.4.11\logback-core-1.4.11.jar;C:\Users\marco\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\marco\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\marco\.m2\repository\org\slf4j\jul-to-slf4j\2.0.9\jul-to-slf4j-2.0.9.jar;C:\Users\marco\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\marco\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.2.0\spring-boot-starter-json-3.2.0.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.3\jackson-databind-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.3\jackson-annotations-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.3\jackson-core-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.3\jackson-datatype-jdk8-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.3\jackson-datatype-jsr310-2.15.3.jar;C:\Users\marco\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.3\jackson-module-parameter-names-2.15.3.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.0\spring-boot-starter-tomcat-3.2.0.jar;C:\Users\marco\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.16\tomcat-embed-core-10.1.16.jar;C:\Users\marco\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.16\tomcat-embed-websocket-10.1.16.jar;C:\Users\marco\.m2\repository\org\springframework\spring-web\6.1.1\spring-web-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-beans\6.1.1\spring-beans-6.1.1.jar;C:\Users\marco\.m2\repository\io\micrometer\micrometer-observation\1.12.0\micrometer-observation-1.12.0.jar;C:\Users\marco\.m2\repository\io\micrometer\micrometer-commons\1.12.0\micrometer-commons-1.12.0.jar;C:\Users\marco\.m2\repository\org\springframework\spring-webmvc\6.1.1\spring-webmvc-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-aop\6.1.1\spring-aop-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-context\6.1.1\spring-context-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-expression\6.1.1\spring-expression-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.2.0\spring-boot-starter-data-jpa-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.2.0\spring-boot-starter-aop-3.2.0.jar;C:\Users\marco\.m2\repository\org\aspectj\aspectjweaver\1.9.20.1\aspectjweaver-1.9.20.1.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.0\spring-boot-starter-jdbc-3.2.0.jar;C:\Users\marco\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-jdbc\6.1.1\spring-jdbc-6.1.1.jar;C:\Users\marco\.m2\repository\org\hibernate\orm\hibernate-core\6.3.1.Final\hibernate-core-6.3.1.Final.jar;C:\Users\marco\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\marco\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\marco\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\marco\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\marco\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\marco\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\marco\.m2\repository\net\bytebuddy\byte-buddy\1.14.10\byte-buddy-1.14.10.jar;C:\Users\marco\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.4\jaxb-runtime-4.0.4.jar;C:\Users\marco\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.4\jaxb-core-4.0.4.jar;C:\Users\marco\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\marco\.m2\repository\org\glassfish\jaxb\txw2\4.0.4\txw2-4.0.4.jar;C:\Users\marco\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\marco\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\marco\.m2\repository\org\antlr\antlr4-runtime\4.10.1\antlr4-runtime-4.10.1.jar;C:\Users\marco\.m2\repository\org\springframework\data\spring-data-jpa\3.2.0\spring-data-jpa-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\data\spring-data-commons\3.2.0\spring-data-commons-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\spring-orm\6.1.1\spring-orm-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-tx\6.1.1\spring-tx-6.1.1.jar;C:\Users\marco\.m2\repository\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar;C:\Users\marco\.m2\repository\org\springframework\spring-aspects\6.1.1\spring-aspects-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.2.0\spring-boot-starter-validation-3.2.0.jar;C:\Users\marco\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.16\tomcat-embed-el-10.1.16.jar;C:\Users\marco\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\marco\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-starter-openfeign\4.1.0\spring-cloud-starter-openfeign-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-starter\4.1.0\spring-cloud-starter-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-context\4.1.0\spring-cloud-context-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\security\spring-security-rsa\1.1.1\spring-security-rsa-1.1.1.jar;C:\Users\marco\.m2\repository\org\bouncycastle\bcprov-jdk18on\1.74\bcprov-jdk18on-1.74.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-openfeign-core\4.1.0\spring-cloud-openfeign-core-4.1.0.jar;C:\Users\marco\.m2\repository\io\github\openfeign\form\feign-form-spring\3.8.0\feign-form-spring-3.8.0.jar;C:\Users\marco\.m2\repository\io\github\openfeign\form\feign-form\3.8.0\feign-form-3.8.0.jar;C:\Users\marco\.m2\repository\commons-fileupload\commons-fileupload\1.5\commons-fileupload-1.5.jar;C:\Users\marco\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-commons\4.1.0\spring-cloud-commons-4.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\security\spring-security-crypto\6.2.0\spring-security-crypto-6.2.0.jar;C:\Users\marco\.m2\repository\io\github\openfeign\feign-core\13.1\feign-core-13.1.jar;C:\Users\marco\.m2\repository\io\github\openfeign\feign-slf4j\13.1\feign-slf4j-13.1.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-starter-circuitbreaker-resilience4j\3.1.0\spring-cloud-starter-circuitbreaker-resilience4j-3.1.0.jar;C:\Users\marco\.m2\repository\org\springframework\cloud\spring-cloud-circuitbreaker-resilience4j\3.1.0\spring-cloud-circuitbreaker-resilience4j-3.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-spring-boot3\2.1.0\resilience4j-spring-boot3-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-spring6\2.1.0\resilience4j-spring6-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-annotations\2.1.0\resilience4j-annotations-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-consumer\2.1.0\resilience4j-consumer-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-circularbuffer\2.1.0\resilience4j-circularbuffer-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-framework-common\2.1.0\resilience4j-framework-common-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-micrometer\2.1.0\resilience4j-micrometer-2.1.0.jar;C:\Users\marco\.m2\repository\io\micrometer\micrometer-core\1.12.0\micrometer-core-1.12.0.jar;C:\Users\marco\.m2\repository\org\hdrhistogram\HdrHistogram\2.1.12\HdrHistogram-2.1.12.jar;C:\Users\marco\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-retry\2.1.0\resilience4j-retry-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-ratelimiter\2.1.0\resilience4j-ratelimiter-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-circuitbreaker\2.1.0\resilience4j-circuitbreaker-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-core\2.1.0\resilience4j-core-2.1.0.jar;C:\Users\marco\.m2\repository\io\github\resilience4j\resilience4j-timelimiter\2.1.0\resilience4j-timelimiter-2.1.0.jar;C:\Users\marco\.m2\repository\com\mysql\mysql-connector-j\8.1.0\mysql-connector-j-8.1.0.jar;C:\Users\marco\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-devtools\3.2.0\spring-boot-devtools-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot\3.2.0\spring-boot-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.0\spring-boot-autoconfigure-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.2.0\spring-boot-starter-test-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-test\3.2.0\spring-boot-test-3.2.0.jar;C:\Users\marco\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.0\spring-boot-test-autoconfigure-3.2.0.jar;C:\Users\marco\.m2\repository\com\jayway\jsonpath\json-path\2.8.0\json-path-2.8.0.jar;C:\Users\marco\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\marco\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\marco\.m2\repository\net\minidev\json-smart\2.5.0\json-smart-2.5.0.jar;C:\Users\marco\.m2\repository\net\minidev\accessors-smart\2.5.0\accessors-smart-2.5.0.jar;C:\Users\marco\.m2\repository\org\ow2\asm\asm\9.3\asm-9.3.jar;C:\Users\marco\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\marco\.m2\repository\org\awaitility\awaitility\4.2.0\awaitility-4.2.0.jar;C:\Users\marco\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\marco\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\marco\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\marco\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\marco\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\marco\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;C:\Users\marco\.m2\repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\marco\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.10\byte-buddy-agent-1.14.10.jar;C:\Users\marco\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\marco\.m2\repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\marco\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\marco\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-core\6.1.1\spring-core-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-jcl\6.1.1\spring-jcl-6.1.1.jar;C:\Users\marco\.m2\repository\org\springframework\spring-test\6.1.1\spring-test-6.1.1.jar;C:\Users\marco\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;C:\Users\marco\.m2\repository\com\h2database\h2\2.2.224\h2-2.2.224.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\marco"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-01-21"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="C:\Users\marco\AppData\Local\Temp\surefire5400888189990728839\surefirebooter-20260617181404385_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
+    <property name="user.name" value="marco"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\marco\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\marco\AppData\Local\Temp\"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="21.0.6"/>
+    <property name="user.dir" value="C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="18536"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;c:\Users\marco\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\marco\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Users\marco\AppData\Roaming\Code\User\globalStorage\pleiades.java-extension-pack-jdk\gradle\latest\bin;C:\Users\marco\AppData\Roaming\Code\User\globalStorage\pleiades.java-extension-pack-jdk\maven\latest\bin;C:\Program Files\Java\jdk-21\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Users\Public\Documents\dbhomeXE\bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Users\marco\AppData\Local\Microsoft\WindowsApps;C:\Users\marco\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\marco\AppData\Local\spicetify;C:\Users\marco\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2025.2\bin;C:\Users\marco\AppData\Local\Programs\Windsurf\bin;c:\Users\marco\.vscode\extensions\vscjava.vscode-java-debug-0.59.0\bundled\scripts\noConfigScripts;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.6+8-LTS-188"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[ms-citas] "/>
+  </properties>
+  <testcase name="findBySalaIdAndFechaHoraBetween_DebeRetornarResultados" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.062">
+    <system-out><![CDATA[2026-06-17T18:14:26.772-04:00  INFO 18536 --- [ms-citas] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.microservicios.mscitas.Repository.CitaRepositoryTest]: CitaRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-17T18:14:26.837-04:00  INFO 18536 --- [ms-citas] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.microservicios.mscitas.MsCitasApplication for test class com.microservicios.mscitas.Repository.CitaRepositoryTest
+2026-06-17T18:14:26.846-04:00  INFO 18536 --- [ms-citas] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-06-17T18:14:26.931-04:00  INFO 18536 --- [ms-citas] [           main] c.m.m.Repository.CitaRepositoryTest      : Starting CitaRepositoryTest using Java 21.0.6 with PID 18536 (started by marco in C:\Users\marco\Desktop\ProyectoFullstack\MS-Citas)
+2026-06-17T18:14:26.931-04:00 DEBUG 18536 --- [ms-citas] [           main] c.m.m.Repository.CitaRepositoryTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-17T18:14:26.931-04:00  INFO 18536 --- [ms-citas] [           main] c.m.m.Repository.CitaRepositoryTest      : No active profile set, falling back to 1 default profile: "default"
+2026-06-17T18:14:27.148-04:00  INFO 18536 --- [ms-citas] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-17T18:14:27.172-04:00  INFO 18536 --- [ms-citas] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
+2026-06-17T18:14:27.202-04:00  INFO 18536 --- [ms-citas] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-06-17T18:14:27.234-04:00  INFO 18536 --- [ms-citas] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:e563dde3-c17d-4df3-b969-a8c63af6dda3;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-06-17T18:14:27.300-04:00  INFO 18536 --- [ms-citas] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-17T18:14:27.308-04:00  INFO 18536 --- [ms-citas] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-17T18:14:27.321-04:00  INFO 18536 --- [ms-citas] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-17T18:14:27.451-04:00  INFO 18536 --- [ms-citas] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-17T18:14:27.475-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    create table citas (
+        id bigint generated by default as identity,
+        especialidad varchar(255) not null,
+        fecha_hora timestamp(6) not null,
+        medico_id varchar(255) not null,
+        medico_nombre varchar(255) not null,
+        motivo varchar(255) not null,
+        sala_id bigint not null,
+        sala_nombre varchar(255) not null,
+        user_id varchar(255) not null,
+        user_nombre varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table citas (
+        id bigint generated by default as identity,
+        especialidad varchar(255) not null,
+        fecha_hora timestamp(6) not null,
+        medico_id varchar(255) not null,
+        medico_nombre varchar(255) not null,
+        motivo varchar(255) not null,
+        sala_id bigint not null,
+        sala_nombre varchar(255) not null,
+        user_id varchar(255) not null,
+        user_nombre varchar(255) not null,
+        primary key (id)
+    )
+2026-06-17T18:14:27.477-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    alter table if exists citas 
+       drop constraint if exists uk_medico_fecha
+Hibernate: 
+    alter table if exists citas 
+       drop constraint if exists uk_medico_fecha
+2026-06-17T18:14:27.479-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    alter table if exists citas 
+       add constraint uk_medico_fecha unique (medico_id, fecha_hora)
+Hibernate: 
+    alter table if exists citas 
+       add constraint uk_medico_fecha unique (medico_id, fecha_hora)
+2026-06-17T18:14:27.479-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    alter table if exists citas 
+       drop constraint if exists uk_sala_fecha
+Hibernate: 
+    alter table if exists citas 
+       drop constraint if exists uk_sala_fecha
+2026-06-17T18:14:27.481-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    alter table if exists citas 
+       add constraint uk_sala_fecha unique (sala_id, fecha_hora)
+Hibernate: 
+    alter table if exists citas 
+       add constraint uk_sala_fecha unique (sala_id, fecha_hora)
+2026-06-17T18:14:27.481-04:00  INFO 18536 --- [ms-citas] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-17T18:14:27.647-04:00  INFO 18536 --- [ms-citas] [           main] c.m.m.Repository.CitaRepositoryTest      : Started CitaRepositoryTest in 0.801 seconds (process running for 22.995)
+2026-06-17T18:14:27.676-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.700-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=? 
+        and c1_0.fecha_hora between ? and ?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=? 
+        and c1_0.fecha_hora between ? and ?
+]]></system-out>
+  </testcase>
+  <testcase name="findByEspecialidad_DebeRetornarCitasDeLaEspecialidad" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.017">
+    <system-out><![CDATA[2026-06-17T18:14:27.720-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.728-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.especialidad=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.especialidad=?
+]]></system-out>
+  </testcase>
+  <testcase name="findCitasPasadas_DebeRetornarListaVacia" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.025">
+    <system-out><![CDATA[2026-06-17T18:14:27.742-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.752-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.fecha_hora<? 
+    order by
+        c1_0.fecha_hora desc
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.fecha_hora<? 
+    order by
+        c1_0.fecha_hora desc
+]]></system-out>
+  </testcase>
+  <testcase name="findByMedicoIdAndFechaHoraBetween_DebeRetornarResultados" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.052">
+    <system-out><![CDATA[2026-06-17T18:14:27.770-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.806-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=? 
+        and c1_0.fecha_hora between ? and ?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=? 
+        and c1_0.fecha_hora between ? and ?
+]]></system-out>
+  </testcase>
+  <testcase name="findCitasProximas_DebeRetornarResultados" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.024">
+    <system-out><![CDATA[2026-06-17T18:14:27.832-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.843-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.fecha_hora>=? 
+    order by
+        c1_0.fecha_hora
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.fecha_hora>=? 
+    order by
+        c1_0.fecha_hora
+]]></system-out>
+  </testcase>
+  <testcase name="existsByMedicoIdAndFechaHora_DebeRetornarTrue" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.04">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at com.microservicios.mscitas.Repository.CitaRepositoryTest.existsByMedicoIdAndFechaHora_DebeRetornarTrue(CitaRepositoryTest.java:87)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[2026-06-17T18:14:27.859-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.867-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=? 
+        and c1_0.fecha_hora=? 
+    fetch
+        first ? rows only
+Hibernate: 
+    select
+        c1_0.id 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=? 
+        and c1_0.fecha_hora=? 
+    fetch
+        first ? rows only
+]]></system-out>
+  </testcase>
+  <testcase name="findByMedicoId_DebeRetornarCitasDelMedico" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.041">
+    <system-out><![CDATA[2026-06-17T18:14:27.908-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.927-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="countBySalaIdAndFechaHoraBetween_DebeContarCorrectamente" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.049">
+    <system-out><![CDATA[2026-06-17T18:14:27.953-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:27.978-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        count(c1_0.id) 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=? 
+        and c1_0.fecha_hora between ? and ?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=? 
+        and c1_0.fecha_hora between ? and ?
+]]></system-out>
+  </testcase>
+  <testcase name="countByMedicoIdAndFechaHoraBetween_DebeContarCorrectamente" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.037">
+    <system-out><![CDATA[2026-06-17T18:14:28.003-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:28.018-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        count(c1_0.id) 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=? 
+        and c1_0.fecha_hora between ? and ?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        citas c1_0 
+    where
+        c1_0.medico_id=? 
+        and c1_0.fecha_hora between ? and ?
+]]></system-out>
+  </testcase>
+  <testcase name="existsBySalaIdAndFechaHora_DebeRetornarTrue" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.023">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at com.microservicios.mscitas.Repository.CitaRepositoryTest.existsBySalaIdAndFechaHora_DebeRetornarTrue(CitaRepositoryTest.java:97)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[2026-06-17T18:14:28.044-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:28.052-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=? 
+        and c1_0.fecha_hora=? 
+    fetch
+        first ? rows only
+Hibernate: 
+    select
+        c1_0.id 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=? 
+        and c1_0.fecha_hora=? 
+    fetch
+        first ? rows only
+]]></system-out>
+  </testcase>
+  <testcase name="findByUserId_DebeRetornarCitasDelUsuario" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.03">
+    <system-out><![CDATA[2026-06-17T18:14:28.071-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:28.082-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.user_id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.user_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="findBySalaId_DebeRetornarCitasDeLaSala" classname="com.microservicios.mscitas.Repository.CitaRepositoryTest" time="0.032">
+    <system-out><![CDATA[2026-06-17T18:14:28.106-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        citas
+        (especialidad, fecha_hora, medico_id, medico_nombre, motivo, sala_id, sala_nombre, user_id, user_nombre, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-06-17T18:14:28.117-04:00 DEBUG 18536 --- [ms-citas] [           main] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.especialidad,
+        c1_0.fecha_hora,
+        c1_0.medico_id,
+        c1_0.medico_nombre,
+        c1_0.motivo,
+        c1_0.sala_id,
+        c1_0.sala_nombre,
+        c1_0.user_id,
+        c1_0.user_nombre 
+    from
+        citas c1_0 
+    where
+        c1_0.sala_id=?
+]]></system-out>
+  </testcase>
+</testsuite>

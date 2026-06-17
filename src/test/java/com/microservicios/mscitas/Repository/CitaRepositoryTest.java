@@ -16,162 +16,170 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 class CitaRepositoryTest {
 
-        @Autowired
-        private CitaRepository citaRepository;
+    @Autowired
+    private CitaRepository citaRepository;
 
-        private Cita cita;
+    private Cita cita;
+    private LocalDateTime fechaPrueba;
 
-        @BeforeEach
-        void setUp() {
+    @BeforeEach
+    void setUp() {
 
-                cita = Cita.builder()
-                                .userId("12345678-9")
-                                .userNombre("Juan Perez")
-                                .medicoId("1")
-                                .medicoNombre("Dr. House")
-                                .especialidad("Medicina General")
-                                .salaId(1L)
-                                .salaNombre("Sala A")
-                                .fechaHora(LocalDateTime.now().plusDays(1))
-                                .motivo("Control")
-                                .build();
+        fechaPrueba = LocalDateTime.of(
+                2026,
+                6,
+                20,
+                10,
+                30,
+                0
+        );
 
-                citaRepository.save(cita);
-        }
+        cita = Cita.builder()
+                .userId("12345678-9")
+                .userNombre("Juan Perez")
+                .medicoId("1")
+                .medicoNombre("Dr. House")
+                .especialidad("Medicina General")
+                .salaId(1L)
+                .salaNombre("Sala A")
+                .fechaHora(fechaPrueba)
+                .motivo("Control")
+                .build();
 
-        @Test
-        void findByUserId_DebeRetornarCitasDelUsuario() {
+        citaRepository.save(cita);
+    }
 
-                List<Cita> resultado = citaRepository.findByUserId("12345678-9");
+    @Test
+    void findByUserId_DebeRetornarCitasDelUsuario() {
 
-                assertFalse(resultado.isEmpty());
-                assertEquals(1, resultado.size());
-                assertEquals("Juan Perez", resultado.get(0).getUserNombre());
-        }
+        List<Cita> resultado = citaRepository.findByUserId("12345678-9");
 
-        @Test
-        void findByMedicoId_DebeRetornarCitasDelMedico() {
+        assertFalse(resultado.isEmpty());
+        assertEquals(1, resultado.size());
+        assertEquals("Juan Perez", resultado.get(0).getUserNombre());
+    }
 
-                List<Cita> resultado = citaRepository.findByMedicoId("1");
+    @Test
+    void findByMedicoId_DebeRetornarCitasDelMedico() {
 
-                assertFalse(resultado.isEmpty());
-                assertEquals(1, resultado.size());
-                assertEquals("Dr. House", resultado.get(0).getMedicoNombre());
-        }
+        List<Cita> resultado = citaRepository.findByMedicoId("1");
 
-        @Test
-        void findBySalaId_DebeRetornarCitasDeLaSala() {
+        assertFalse(resultado.isEmpty());
+        assertEquals(1, resultado.size());
+        assertEquals("Dr. House", resultado.get(0).getMedicoNombre());
+    }
 
-                List<Cita> resultado = citaRepository.findBySalaId(1L);
+    @Test
+    void findBySalaId_DebeRetornarCitasDeLaSala() {
 
-                assertFalse(resultado.isEmpty());
-                assertEquals(1, resultado.size());
-        }
+        List<Cita> resultado = citaRepository.findBySalaId(1L);
 
-        @Test
-        void findByEspecialidad_DebeRetornarCitasDeLaEspecialidad() {
+        assertFalse(resultado.isEmpty());
+        assertEquals(1, resultado.size());
+    }
 
-                List<Cita> resultado = citaRepository.findByEspecialidad("Medicina General");
+    @Test
+    void findByEspecialidad_DebeRetornarCitasDeLaEspecialidad() {
 
-                assertFalse(resultado.isEmpty());
-                assertEquals(1, resultado.size());
-        }
+        List<Cita> resultado = citaRepository.findByEspecialidad("Medicina General");
 
-        @Test
-        void existsByMedicoIdAndFechaHora_DebeRetornarTrue() {
+        assertFalse(resultado.isEmpty());
+        assertEquals(1, resultado.size());
+    }
 
-                boolean existe = citaRepository.existsByMedicoIdAndFechaHora(
-                                "1",
-                                cita.getFechaHora());
+    @Test
+    void existsByMedicoIdAndFechaHora_DebeRetornarTrue() {
 
-                assertTrue(existe);
-        }
+        boolean existe = citaRepository.existsByMedicoIdAndFechaHora(
+                "1",
+                fechaPrueba);
 
-        @Test
-        void existsBySalaIdAndFechaHora_DebeRetornarTrue() {
+        assertTrue(existe);
+    }
 
-                boolean existe = citaRepository.existsBySalaIdAndFechaHora(
-                                1L,
-                                cita.getFechaHora());
+    @Test
+    void existsBySalaIdAndFechaHora_DebeRetornarTrue() {
 
-                assertTrue(existe);
-        }
+        boolean existe = citaRepository.existsBySalaIdAndFechaHora(
+                1L,
+                fechaPrueba);
 
-        @Test
-        void findByMedicoIdAndFechaHoraBetween_DebeRetornarResultados() {
+        assertTrue(existe);
+    }
 
-                LocalDateTime inicio = cita.getFechaHora().minusHours(1);
+    @Test
+    void findByMedicoIdAndFechaHoraBetween_DebeRetornarResultados() {
 
-                LocalDateTime fin = cita.getFechaHora().plusHours(1);
+        LocalDateTime inicio = fechaPrueba.minusHours(1);
+        LocalDateTime fin = fechaPrueba.plusHours(1);
 
-                List<Cita> resultado = citaRepository.findByMedicoIdAndFechaHoraBetween(
-                                "1",
-                                inicio,
-                                fin);
+        List<Cita> resultado = citaRepository.findByMedicoIdAndFechaHoraBetween(
+                "1",
+                inicio,
+                fin);
 
-                assertFalse(resultado.isEmpty());
-                assertEquals(1, resultado.size());
-        }
+        assertFalse(resultado.isEmpty());
+        assertEquals(1, resultado.size());
+    }
 
-        @Test
-        void findBySalaIdAndFechaHoraBetween_DebeRetornarResultados() {
+    @Test
+    void findBySalaIdAndFechaHoraBetween_DebeRetornarResultados() {
 
-                LocalDateTime inicio = cita.getFechaHora().minusHours(1);
+        LocalDateTime inicio = fechaPrueba.minusHours(1);
+        LocalDateTime fin = fechaPrueba.plusHours(1);
 
-                LocalDateTime fin = cita.getFechaHora().plusHours(1);
+        List<Cita> resultado = citaRepository.findBySalaIdAndFechaHoraBetween(
+                1L,
+                inicio,
+                fin);
 
-                List<Cita> resultado = citaRepository.findBySalaIdAndFechaHoraBetween(
-                                1L,
-                                inicio,
-                                fin);
+        assertFalse(resultado.isEmpty());
+        assertEquals(1, resultado.size());
+    }
 
-                assertFalse(resultado.isEmpty());
-                assertEquals(1, resultado.size());
-        }
+    @Test
+    void countByMedicoIdAndFechaHoraBetween_DebeContarCorrectamente() {
 
-        @Test
-        void countByMedicoIdAndFechaHoraBetween_DebeContarCorrectamente() {
+        LocalDateTime inicio = fechaPrueba.minusHours(1);
+        LocalDateTime fin = fechaPrueba.plusHours(1);
 
-                LocalDateTime inicio = cita.getFechaHora().minusHours(1);
+        long cantidad = citaRepository.countByMedicoIdAndFechaHoraBetween(
+                "1",
+                inicio,
+                fin);
 
-                LocalDateTime fin = cita.getFechaHora().plusHours(1);
+        assertEquals(1, cantidad);
+    }
 
-                long cantidad = citaRepository.countByMedicoIdAndFechaHoraBetween(
-                                "1",
-                                inicio,
-                                fin);
+    @Test
+    void countBySalaIdAndFechaHoraBetween_DebeContarCorrectamente() {
 
-                assertEquals(1, cantidad);
-        }
+        LocalDateTime inicio = fechaPrueba.minusHours(1);
+        LocalDateTime fin = fechaPrueba.plusHours(1);
 
-        @Test
-        void countBySalaIdAndFechaHoraBetween_DebeContarCorrectamente() {
+        long cantidad = citaRepository.countBySalaIdAndFechaHoraBetween(
+                1L,
+                inicio,
+                fin);
 
-                LocalDateTime inicio = cita.getFechaHora().minusHours(1);
+        assertEquals(1, cantidad);
+    }
 
-                LocalDateTime fin = cita.getFechaHora().plusHours(1);
+    @Test
+    void findCitasProximas_DebeRetornarResultados() {
 
-                long cantidad = citaRepository.countBySalaIdAndFechaHoraBetween(
-                                1L,
-                                inicio,
-                                fin);
+        List<Cita> resultado = citaRepository.findCitasProximas(
+                fechaPrueba.minusHours(1));
 
-                assertEquals(1, cantidad);
-        }
+        assertFalse(resultado.isEmpty());
+    }
 
-        @Test
-        void findCitasProximas_DebeRetornarResultados() {
+    @Test
+    void findCitasPasadas_DebeRetornarListaVacia() {
 
-                List<Cita> resultado = citaRepository.findCitasProximas(LocalDateTime.now());
+        List<Cita> resultado = citaRepository.findCitasPasadas(
+                fechaPrueba.minusHours(1));
 
-                assertFalse(resultado.isEmpty());
-        }
-
-        @Test
-        void findCitasPasadas_DebeRetornarListaVacia() {
-
-                List<Cita> resultado = citaRepository.findCitasPasadas(LocalDateTime.now());
-
-                assertTrue(resultado.isEmpty());
-        }
+        assertTrue(resultado.isEmpty());
+    }
 }
