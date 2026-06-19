@@ -16,4 +16,4 @@ public interface SalaClient {
             String tipo,
             Integer capacidad) {
     }
-}
+} 
