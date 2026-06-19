@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "ms-historial", url = "http://ms-historial:8085")
+@FeignClient(name = "ms-historial", url = "http://44.200.40.70:8085")
 public interface HistorialClient {
 
         /**

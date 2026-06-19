@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "ms-notificaciones", url = "http://ms-notificaciones:8086")
+@FeignClient(name = "ms-notificaciones", url = "http://32.192.180.163:8086")
 public interface NotificationClient {
 
     /**
