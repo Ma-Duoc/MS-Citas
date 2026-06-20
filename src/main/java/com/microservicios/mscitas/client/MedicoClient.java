@@ -14,7 +14,6 @@ public interface MedicoClient {
                         Long id,
                         String nombre,
                         String apellido,
-                        String especialidad,
-                        boolean activo) {
+                        String especialidad) {
         }
 }

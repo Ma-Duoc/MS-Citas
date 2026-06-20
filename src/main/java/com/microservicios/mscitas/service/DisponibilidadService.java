@@ -133,13 +133,6 @@ public class DisponibilidadService {
                 );
             }
 
-            if (!medico.activo()) {
-
-                throw new CitaException(
-                        "Médico inactivo"
-                );
-            }
-
             logger.info(
                     "Médico válido: {} {}",
                     medico.nombre(),

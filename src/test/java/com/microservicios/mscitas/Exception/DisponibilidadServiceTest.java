@@ -58,8 +58,7 @@ class DisponibilidadServiceTest {
                                                 1L,
                                                 "Carlos",
                                                 "Gomez",
-                                                "Cardiologia",
-                                                true));
+                                                "Cardiologia"));
 
                 when(salaClient.obtenerSala(1L))
                                 .thenReturn(new SalaClient.SalaResponse(
@@ -129,8 +128,7 @@ class DisponibilidadServiceTest {
                                                 1L,
                                                 "Carlos",
                                                 "Gomez",
-                                                "Cardiologia",
-                                                false));
+                                                "Cardiologia"));
 
                 assertThrows(
                                 CitaException.class,
@@ -157,8 +155,7 @@ class DisponibilidadServiceTest {
                                                 1L,
                                                 "Carlos",
                                                 "Gomez",
-                                                "Cardiologia",
-                                                true));
+                                                "Cardiologia"));
 
                 when(salaClient.obtenerSala(1L))
                                 .thenReturn(null);
@@ -226,8 +223,7 @@ class DisponibilidadServiceTest {
                                                 1L,
                                                 "Carlos",
                                                 "Gomez",
-                                                "Cardiologia",
-                                                true));
+                                                "Cardiologia"));
 
                 when(salaClient.obtenerSala(1L))
                                 .thenThrow(mock(FeignException.class));
